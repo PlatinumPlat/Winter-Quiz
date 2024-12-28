@@ -46,8 +46,21 @@ button:hover {
 button:active {
   transform: scale(0.95);
 }
+button:disabled {
+  background-color: #26325b;
+}
+
 #result {
   font-size: 25px;
   font-weight: bold;
   margin-top: 30px;
+}
+
+footer {
+  margin-top: 35px;
+  text-align: center;
+  padding: 5px;
+  background-color: aliceblue;
+  color: #04538d;
+  border-radius: 20px;
 }

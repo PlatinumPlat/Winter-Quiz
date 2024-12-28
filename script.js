@@ -55,6 +55,10 @@ let currentQuestion = 0;
 let score = 0;
 
 function loadQuestion() {
+    document.getElementById("answer A").disabled = false;
+    document.getElementById("answer B").disabled = false;
+    document.getElementById("answer C").disabled = false;
+    document.getElementById("answer D").disabled = false;
     const questionObj = questions[currentQuestion];
     document.getElementById("question").textContent = questionObj.question;
     document.getElementById("answer A").textContent = "A: " + questionObj.options.A;
@@ -67,38 +71,58 @@ function loadQuestion() {
 
 function checkAnswer(answer) {
     const questionObj = questions[currentQuestion];
+    
     if (answer === questionObj.correctAnswer) {
         score++; // Increase score if the answer is correct
         document.getElementById("result").textContent = "Correct!";
     } else {
-        document.getElementById("result").textContent = "Wrong :( The correct answer was: ${questionObj.correctAnswer}.";
+        document.getElementById("result").textContent = `Wrong :( The correct answer was: ${questionObj.correctAnswer}.`;
     }
+    
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        setTimeout(loadQuestion, 1000);
+    if (currentQuestion < 5) {
+        document.getElementById("answer A").disabled = true;
+        document.getElementById("answer B").disabled = true;
+        document.getElementById("answer C").disabled = true;
+        document.getElementById("answer D").disabled = true;
+        setTimeout(loadQuestion, 1500);
     } else {
-        setTimeout(showFinalScore, 1000);
+        document.getElementById("answer A").disabled = true;
+        document.getElementById("answer B").disabled = true;
+        document.getElementById("answer C").disabled = true;
+        document.getElementById("answer D").disabled = true;
+        setTimeout(showFinalScore, 1500);
     }
 }
+
+
 
 function showFinalScore() {
-    document.getElementById("result").textContent = "The Quiz is over! Your final score is: ${questionObj.score} out of ${questionObj.questions.length}."
+    document.getElementById("result").textContent = `The Quiz is over! Your final score is: ${score} out of ${questions.length}.`;
+    document.getElementById("answer A").style.display="none";
+    document.getElementById("answer B").style.display="none";
+    document.getElementById("answer C").style.display="none";
+    document.getElementById("answer D").style.display="none";
+    document.getElementById("question").style.display="none";
 }
 
-document.getElementById("answer A").addEventListener("click", function() {
-    checkAnswer("A");
-});
+if (document.getElementById("answer A").disabled === false) {
+    
+    document.getElementById("answer A").addEventListener("click", function() {
+        checkAnswer("A");
+    });
 
-document.getElementById("answer B").addEventListener("click", function() {
-    checkAnswer("B");
-});
+    document.getElementById("answer B").addEventListener("click", function() {
+        checkAnswer("B");
+    });
 
-document.getElementById("answer C").addEventListener("click", function() {
-    checkAnswer("C");
-});
+    document.getElementById("answer C").addEventListener("click", function() {
+        checkAnswer("C");
+    });
 
-document.getElementById("answer D").addEventListener("click", function() {
-    checkAnswer("D");
-});
+    document.getElementById("answer D").addEventListener("click", function() {
+        checkAnswer("D");
+    });
+}
 
-loadQuestion
+loadQuestion()
