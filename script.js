@@ -59,6 +59,7 @@ function loadQuestion() {
     document.getElementById("answer B").disabled = false;
     document.getElementById("answer C").disabled = false;
     document.getElementById("answer D").disabled = false;
+    document.getElementById("next").disabled = true;
     const questionObj = questions[currentQuestion];
     document.getElementById("question").textContent = questionObj.question;
     document.getElementById("answer A").textContent = "A: " + questionObj.options.A;
@@ -70,6 +71,7 @@ function loadQuestion() {
 }
 
 function checkAnswer(answer) {
+    document.getElementById("next").disabled = false;
     const questionObj = questions[currentQuestion];
     
     if (answer === questionObj.correctAnswer) {
