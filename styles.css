@@ -12,6 +12,12 @@ h1 {
   color:#38AECC;
   font-weight:600;
 }
+
+h2 {
+  color:#61b9cf;
+  font-weight:600;
+}
+
 .question-box {
   background-color: aliceblue;
   font-family: "Henny Penny", serif;
