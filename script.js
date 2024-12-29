@@ -85,12 +85,13 @@ function checkAnswer(answer) {
         document.getElementById("answer B").disabled = true;
         document.getElementById("answer C").disabled = true;
         document.getElementById("answer D").disabled = true;
-        setTimeout(loadQuestion, 1500);
+        nextButton();
     } else {
         document.getElementById("answer A").disabled = true;
         document.getElementById("answer B").disabled = true;
         document.getElementById("answer C").disabled = true;
         document.getElementById("answer D").disabled = true;
+        document.getElementById('next').style.display="none";
         setTimeout(showFinalScore, 1500);
     }
 }
@@ -98,12 +99,20 @@ function checkAnswer(answer) {
 
 
 function showFinalScore() {
-    document.getElementById("result").textContent = `The Quiz is over! Your final score is: ${score} out of ${questions.length}.`;
     document.getElementById("answer A").style.display="none";
     document.getElementById("answer B").style.display="none";
     document.getElementById("answer C").style.display="none";
     document.getElementById("answer D").style.display="none";
     document.getElementById("question").style.display="none";
+    document.getElementById("result").textContent = `The Quiz is over! Your final score is: ${score} out of ${questions.length}.`;
+    document.getElementById('img').classList.toggle('show');
+    console.log("HI");
+}
+
+function nextButton() { 
+    document.getElementById("next").addEventListener("click", function() {
+        loadQuestion();
+    });
 }
 
 if (document.getElementById("answer A").disabled === false) {
