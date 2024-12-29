@@ -45,12 +45,14 @@ function checkAnswer(answer) {
 }
 
 
-
 function showFinalScore() {
     document.getElementById("answer A").style.display=document.getElementById("answer B").style.display=document.getElementById("answer C").style.display=document.getElementById("answer D").style.display=document.getElementById("question").style.display="none";
     document.getElementById("result").textContent = `The Quiz is over! Your final score is: ${score} out of ${questions.length}.`;
     document.getElementById('img').classList.toggle('show');
-    console.log("HI");
+    document.getElementById("end").classList.toggle('show');
+    document.getElementById("home").addEventListener("click", function() {
+        location.href='index.html';
+    });
 }
 
 function nextButton() { 

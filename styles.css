@@ -88,3 +88,12 @@ img.show {
   justify-self: center;
   border-radius: 10px;
 }
+
+#end {
+  display: none;
+}
+
+#end.show {
+  display: flex;
+  justify-self: center;
+}
