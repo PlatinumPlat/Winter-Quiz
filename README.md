@@ -1,2 +1,2 @@
-# Math Notes
- Mental Math Tricks
+# Winter Quiz
+ Trivia
